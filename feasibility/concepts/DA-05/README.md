@@ -160,7 +160,7 @@ What the assigned intern investigates, using paper methods only (calculations, c
 
 | Item | Value |
 |---|---|
-| README revision | 0.3.1 |
+| README revision | 0.3.2 |
 | Concept sheet | `docs/images/KMECH-CONCEPT-DA-05.png` |
 | Cross-section sheet | `docs/images/KMECH-CROSS-SECTION-DA-05.png` |
 | Manifest | `docs/images/ARTWORK_MANIFEST.json` |
