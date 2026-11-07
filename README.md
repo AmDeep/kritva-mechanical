@@ -212,6 +212,37 @@ No commit or pull request rule is verified as enforced in this repository yet: t
 
 Proposed convention, to be adopted formally through the owner and recorded in [planning/GIT_COMMIT_STEP.md](planning/GIT_COMMIT_STEP.md): the kritva-program commit standard (decision D-053; see section 4 of the program acceptance standard). In short, `type(scope): summary` with exactly one `Task:` or `Tasks:` footer, or `Tasks: None (reason)` on a docs or chore commit that implements no task; work on a branch and open a pull request; merge with a merge commit; never push to `main`; no AI-session trailers or links in commit messages or pull request text. Until adopted, this is advisory reference, not a second mandatory format.
 
+### 12.1 First-time contributor quick start
+
+Advisory example of the proposed convention above, not a verified enforced rule. Never commit on or push to `main`.
+
+```bash
+git clone https://github.com/KritvaOS/kritva-mechanical.git
+cd kritva-mechanical
+git config user.name  "Your Name"
+git config user.email "you@example.com"
+git switch main && git pull --ff-only
+git switch -c docs/short-topic-name          # one branch per change; never work on main
+
+# edit files, then stage only what belongs to this change
+git add path/to/changed-file
+git commit -m "type(scope): summary" -m "Task: ROB-MECH-NNN"
+
+git log --oneline main..HEAD                 # review before pushing
+git push -u origin HEAD
+gh pr create --base main --title "type(scope): summary" --body "Task: ROB-MECH-NNN"
+```
+
+Commit message format, matching the proposed standard in this section:
+
+```
+type(scope): summary
+
+Task: ROB-MECH-NNN
+```
+
+The subject is `type(scope): summary` in the imperative, at most 90 characters, such as `docs(feasibility): add concept images`. Leave one blank line, then exactly one `Task:` footer (`Tasks:` for several IDs, or `Tasks: None (reason)` on a docs or chore commit that implements no task). Do not add AI-session trailers or links. Merge the pull request with a merge commit, not squash or rebase. Before opening it, run the checks that exist in your clone (for example `make test-tools`) and state in the pull request which ones you ran.
+
 ## 13. Safety and Security
 
 Software checks, analytical calculations and simulation validate only the stated model, inputs and software properties. They do not prove physical safety, component suitability, design acceptance or readiness for human use.
